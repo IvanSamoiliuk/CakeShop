@@ -1,5 +1,5 @@
 import React from "react";
-import CakeShopServiceConsumer from "../cakeShopServiceContext";
+import { CakeShopServiceConsumer } from "../cakeShopServiceContext";
 
 function withCakeShopService() {
     return function (Wrapped) {

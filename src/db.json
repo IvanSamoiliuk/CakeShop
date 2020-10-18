@@ -1,0 +1,22 @@
+{
+    "cakes": [
+        {
+            "id": 1,
+            "name": "Наполеон",
+            "imgURL": "https://i1.wp.com/yellowmixer.com/wp-content/uploads/2019/05/DSCF0760-1.jpg?resize=1080%2C720&ssl=1",
+            "price": 250
+        },
+        {
+            "id": 2,
+            "name": "Пьяная вишня",
+            "imgURL": "https://static.1000.menu/img/content/21037/-tort-pyanaya-vishnya-tort-pyanaya-vishnya-klassicheskii_1498585629_1_max.jpg",
+            "price": 270
+        },
+        {
+            "id": 3,
+            "name": "Морковный",
+            "imgURL": "https://e0.edimdoma.ru/data/recipes/0005/9198/59198-ed4_wide.jpg?1468412022",
+            "price": 200
+        }
+    ]
+}

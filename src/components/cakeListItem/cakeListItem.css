@@ -1,0 +1,41 @@
+.sweet_item {
+    width: 300px;
+    min-height: 400px;
+    background-color: #fff;
+    box-shadow: 5px 5px 45px rgba(256, 256, 256, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    margin-right: 40px;
+    margin-bottom: 40px;
+}
+
+.sweet_title {
+    font-size: 22px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.sweet_image {
+    width: calc(100% + 40px);
+    transform: translateX(-20px);
+    height: 240px;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.sweet_price {
+    font-size: 18px;
+    font-weight: 300;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.sweet_btn {
+    width: 150px;
+    height: 40px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}

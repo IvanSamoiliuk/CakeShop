@@ -1,0 +1,22 @@
+.header {
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+}
+
+.header a {
+    display: flex;
+    margin-right: 40px;
+    font-size: 18px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.header .logo {
+    font-family: "Lobster", cursive;
+    font-size: 2.5rem;
+    padding-left: 1rem;
+}
