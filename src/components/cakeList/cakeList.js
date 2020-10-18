@@ -9,19 +9,7 @@ import "./cakeList.css";
 
 class CakeList extends Component {
     componentDidMount() {
-        const {
-            cakeShopService,
-            cakesRequested,
-            cakesLoaded,
-            cakesError,
-        } = this.props;
-        cakesRequested();
-        cakeShopService
-            .getCakes()
-            .then((res) => cakesLoaded(res))
-            .catch((error) => {
-                cakesError(error);
-            });
+        this.props.fetchCakes();
     }
 
     render() {
@@ -49,10 +37,18 @@ const mapStateToProps = (state) => {
     };
 };
 
-const mapDispatchToProps = {
-    cakesLoaded,
-    cakesRequested,
-    cakesError,
+const mapDispatchToProps = (dispatch, ownProps) => {
+    const fetchCakes = () => {
+        const { cakeShopService } = ownProps;
+        dispatch(cakesRequested());
+        cakeShopService
+            .getCakes()
+            .then((res) => dispatch(cakesLoaded(res)))
+            .catch((error) => {
+                dispatch(cakesError(error));
+            });
+    };
+    return { fetchCakes };
 };
 
 export default withCakeShopService()(
