@@ -6,19 +6,19 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case "CAKES_LOADED":
+        case "FETCH_CAKES_SUCCESS":
             return {
                 cakes: action.payload,
                 loading: false,
                 error: null,
             };
-        case "CAKES_REQUESTED":
+        case "FETCH_CAKES_REQUEST":
             return {
                 cakes: [],
                 loading: true,
                 error: null,
             };
-        case "CAKES_ERROR":
+        case "FETCH_CAKES_FEILURE":
             return {
                 cakes: [],
                 loading: false,

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import withCakeShopService from "../hoc";
-import { cakesLoaded, cakesRequested, cakesError } from "../../actions";
+import { fetchCakes } from "../../actions";
 import CakeListItem from "../cakeListItem/cakeListItem";
 import Spinner from "../spinner";
 import ErrorIndicator from "../errorIndicator";
@@ -37,18 +37,8 @@ const mapStateToProps = (state) => {
     };
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-    const fetchCakes = () => {
-        const { cakeShopService } = ownProps;
-        dispatch(cakesRequested());
-        cakeShopService
-            .getCakes()
-            .then((res) => dispatch(cakesLoaded(res)))
-            .catch((error) => {
-                dispatch(cakesError(error));
-            });
-    };
-    return { fetchCakes };
+const mapDispatchToProps = (dispatch, { cakeShopService }) => {
+    return { fetchCakes: fetchCakes(dispatch, cakeShopService) };
 };
 
 export default withCakeShopService()(
