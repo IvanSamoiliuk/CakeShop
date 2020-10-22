@@ -1,10 +1,10 @@
 import React from "react";
-import Order from "../order";
+import OrderContainer from "../order";
 
 const CartPage = () => {
     return (
         <div>
-            <Order />
+            <OrderContainer />
         </div>
     );
 };

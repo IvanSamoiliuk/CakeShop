@@ -1,13 +1,28 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import withCakeShopService from "../hoc";
-import { fetchCakes } from "../../actions";
+import { fetchCakes, onIncrease } from "../../actions";
 import CakeListItem from "../cakeListItem/cakeListItem";
 import Spinner from "../spinner";
 import ErrorIndicator from "../errorIndicator";
 import "./cakeList.css";
 
-class CakeList extends Component {
+const CakeList = ({ cakes, onIncrease }) => {
+    return (
+        <ul className="sweet_list">
+            {cakes.map((cake) => {
+                return (
+                    <CakeListItem
+                        key={cake.id}
+                        cake={cake}
+                        onIncrease={() => onIncrease(cake.id)}
+                    />
+                );
+            })}
+        </ul>
+    );
+};
+class CakeListContainer extends Component {
     componentDidMount() {
         this.props.fetchCakes();
     }
@@ -20,27 +35,29 @@ class CakeList extends Component {
             return <ErrorIndicator />;
         }
         return (
-            <ul className="sweet_list">
-                {this.props.cakes.map((cake) => {
-                    return <CakeListItem key={cake.id} cake={cake} />;
-                })}
-            </ul>
+            <CakeList
+                cakes={this.props.cakes}
+                onIncrease={this.props.onIncrease}
+            />
         );
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({cakes, loading, error}) => {
     return {
-        cakes: state.cakes,
-        loading: state.loading,
-        error: state.error,
+        cakes: cakes,
+        loading: loading,
+        error: error,
     };
 };
 
 const mapDispatchToProps = (dispatch, { cakeShopService }) => {
-    return { fetchCakes: fetchCakes(dispatch, cakeShopService) };
+    return {
+        fetchCakes: fetchCakes(dispatch, cakeShopService),
+        onIncrease: (id) => dispatch(onIncrease(id)),
+    };
 };
 
 export default withCakeShopService()(
-    connect(mapStateToProps, mapDispatchToProps)(CakeList)
+    connect(mapStateToProps, mapDispatchToProps)(CakeListContainer)
 );

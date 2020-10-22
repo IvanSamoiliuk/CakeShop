@@ -4,6 +4,10 @@ const cakesLoaded = (newCakes) => ({
 });
 const cakesRequested = () => ({ type: "FETCH_CAKES_REQUEST" });
 const cakesError = (error) => ({ type: "FETCH_CAKES_FEILURE", payload: error });
+const addToCart = (id) => ({ type: "ADD_TO_CART", payload: id });
+const onIncrease = (id) => ({ type: "ON_INCREASE", payload: id });
+const onDecrease = (id) => ({ type: "ON_DECREASE", payload: id });
+const onDelete = (id) => ({ type: "ON_DELETE", payload: id });
 function fetchCakes(dispatch, cakeShopService) {
     return function () {
         dispatch(cakesRequested());
@@ -16,4 +20,4 @@ function fetchCakes(dispatch, cakeShopService) {
     };
 }
 
-export { fetchCakes };
+export { fetchCakes, addToCart, onDecrease, onIncrease, onDelete };
